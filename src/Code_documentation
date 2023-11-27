@@ -17,3 +17,20 @@ Built-in react object used to contain data or information about the component.
 Hooks are very to use
 useState hook allows adding state to Function Components.
 
+JSX is more stricter than HTML, it expects you to have closing tags.
+
+you can also make use of empty wrapper like <> </>
+
+always use () while returning the Components.
+
+always use UpperCase for the Component Names. like 
+function FunctionName(){
+<!-- Some code -->
+}
+
+in JSX always put class as className='' in jsx
+
+you can edit the css component by using the className , in css file use the className by using :
+.App{
+    <!-- write some css code -->
+}

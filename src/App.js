@@ -6,10 +6,10 @@ function App() {
   return (
     <div className="App">
       My Todo Application
-      <FirstComponent></FirstComponent>
-      <SecondComponent></SecondComponent>
-      <ThirdComponent></ThirdComponent>
-      <FourthComponent></FourthComponent>
+      <FirstComponent />
+      <SecondComponent />
+      <ThirdComponent />
+      <FourthComponent />
     </div>
   );
 }
@@ -33,7 +33,7 @@ class ThirdComponent extends Component{
 }
 class FourthComponent extends Component{
   render(){
-    return <div className='FourthComponent'>FourthComponent</div>
+    return (<div className='FourthComponent'>FourthComponent</div>);
   }
 }
 
