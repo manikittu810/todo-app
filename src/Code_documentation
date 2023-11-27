@@ -1,0 +1,15 @@
+understanding the react components 
+First component is typically loaded in React Apps : App component
+
+parts of a component : 
+1.view (JSX or Javascript)
+2.Logic(JavaScript)
+3.Styling(CSS)
+4.State(Internal DataStore)
+5.Props(Pass Data)
+6.Remenber always start Recat Component name with a Capital Letter.
+------------------------------------------------------------------------
+
+State in React : 
+Built-in react object used to contain data or information about the component.
+
