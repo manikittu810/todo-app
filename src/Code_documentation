@@ -13,3 +13,7 @@ parts of a component :
 State in React : 
 Built-in react object used to contain data or information about the component.
 
+
+Hooks are very to use
+useState hook allows adding state to Function Components.
+
