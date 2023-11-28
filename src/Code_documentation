@@ -47,5 +47,12 @@ parts of a component
 -view (JSX or javascript)
 -Logic(javascript)
 -Styling(Css)
--State(Internal Data Store)
+-State(Internal Data Store) : Built-in React object used to contain data or information about the component.
+     -useState allows adding state function to Function Components
+        -useState return two things : 
+                - 1.current state
+                - 2.A function to update state.
+        - Each instance of component has its own state
+        - How to share state between components?
+            - Move state "upwards"(to parent component)
 -props(Pass data)
