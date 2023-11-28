@@ -34,3 +34,8 @@ you can edit the css component by using the className , in css file use the clas
 .App{
     <!-- write some css code -->
 }
+------------------------------------------------------------------------------
+
+Javascript Best practices 
+
+1.Each component its own file
