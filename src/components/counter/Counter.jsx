@@ -3,8 +3,14 @@ import { useState } from 'react';
 import {PropTypes} from 'prop-types';
 
 export default function Counter(){
+
+    const[count,setCount] = useState(0);
+    function incrementCounterParentFunction(by){
+            setCount(count+by);
+    }
     return (
         <>
+        <span className="totalCount">{count}</span>
         <CounterButton by={1}/>
           <CounterButton by={2}/>
           <CounterButton by={5}/>
@@ -33,7 +39,6 @@ export default function Counter(){
 
     return(
     <div className="Counter">
-        <span className="count">{count}</span>
         <div>
             <button className="counterButton" 
             onClick={incrementCounterFunction}>+{by}</button>
