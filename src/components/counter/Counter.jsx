@@ -1,20 +1,20 @@
 import './Counter.css'
 import { useState } from 'react';
+import {PropTypes} from 'prop-types';
 
-
-export default function Counter(){
+export default function Counter({by}){
 
 //state is returning two values , it returns first one is a value and second one is a function.
 //[0,f] the state contains an initial value of the state as the first value and  it is passed as a parameter to the state.
 
     const [count,setCount] = useState(0);
-
+    console.log(by);
     function incrementCounterFunction(){
-        setCount(count+1);
+        setCount(count+by);
         console.log(count);
     };
     function decrementCounterFunction(){
-        setCount(count-1);
+        setCount(count-by);
         console.log(count);
     };
 
@@ -23,10 +23,14 @@ export default function Counter(){
         <span className="count">{count}</span>
         <div>
             <button className="counterButton" 
-            onClick={incrementCounterFunction}>+1</button>
+            onClick={incrementCounterFunction}>+{by}</button>
             <button className="counterButton" 
-            onClick={decrementCounterFunction}>-1</button>
+            onClick={decrementCounterFunction}>-{by}</button>
         </div>
        </div>
     );
+}
+
+Counter.propType={
+    by : PropTypes.number
 }

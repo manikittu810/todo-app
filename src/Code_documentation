@@ -56,3 +56,21 @@ parts of a component
         - How to share state between components?
             - Move state "upwards"(to parent component)
 -props(Pass data)
+--------------------------------------------------------------------------------------
+
+React and its Virtual DOM : 
+here reacts takes a different approach to represent the UI.
+
+React has this Virtual DOM (Kep in memory)
+-React code upodates the virtual DOM
+1. React creates a virtual DOM v1 on load of a page.
+2. You perform an action
+    -React creates Virtual DOM v2 as a result of your action.
+    -React performs a difference between v1 and v2.
+----------------------------------------------------------------------------------------
+
+Exploring React props (properties)
+you can pass "Props" (short for properties) object to a React Component.
+Used for things that remain constant during lifetime of acomponent
+    -example increment value of a specific component
+    
