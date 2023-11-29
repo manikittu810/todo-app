@@ -2,7 +2,20 @@ import './Counter.css'
 import { useState } from 'react';
 import {PropTypes} from 'prop-types';
 
-export default function Counter({by}){
+export default function Counter(){
+    return (
+        <>
+        <CounterButton by={1}/>
+          <CounterButton by={2}/>
+          <CounterButton by={5}/>
+        </>
+    );
+   
+    
+
+}
+
+ function CounterButton({by}){
 
 //state is returning two values , it returns first one is a value and second one is a function.
 //[0,f] the state contains an initial value of the state as the first value and  it is passed as a parameter to the state.
@@ -31,6 +44,6 @@ export default function Counter({by}){
     );
 }
 
-Counter.propType={
+CounterButton.propType={
     by : PropTypes.number
 }
