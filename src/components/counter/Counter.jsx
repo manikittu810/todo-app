@@ -1,6 +1,6 @@
 import './Counter.css'
 import { useState } from 'react';
-import {PropTypes} from 'prop-types';
+import CounterButton from './CounterButton';
 
 export default function Counter(){
 
@@ -8,12 +8,24 @@ export default function Counter(){
     function incrementCounterParentFunction(by){
             setCount(count+by);
     }
+   
+    function decrementCounterParentFunction(by){
+        setCount(count-by);
+}
+
     return (
         <>
         <span className="totalCount">{count}</span>
-        <CounterButton by={1}/>
-          <CounterButton by={2}/>
-          <CounterButton by={5}/>
+        <CounterButton by={1} 
+        incrementMethod = {incrementCounterParentFunction}
+        decrementMethod = {decrementCounterParentFunction}/>
+          <CounterButton by={2} 
+          incrementMethod = {incrementCounterParentFunction}
+          decrementMethod = {decrementCounterParentFunction}
+          />
+          <CounterButton by={5} 
+          incrementMethod = {incrementCounterParentFunction}
+          decrementMethod = {decrementCounterParentFunction}/>
         </>
     );
    
@@ -21,35 +33,5 @@ export default function Counter(){
 
 }
 
- function CounterButton({by}){
+ 
 
-//state is returning two values , it returns first one is a value and second one is a function.
-//[0,f] the state contains an initial value of the state as the first value and  it is passed as a parameter to the state.
-
-    const [count,setCount] = useState(0);
-    console.log(by);
-    function incrementCounterFunction(){
-        setCount(count+by);
-        console.log(count);
-    };
-    function decrementCounterFunction(){
-        setCount(count-by);
-        console.log(count);
-    };
-
-    return(
-    <div className="Counter">
-        <span className = "count">{count}</span>
-        <div>
-            <button className="counterButton" 
-            onClick={incrementCounterFunction}>+{by}</button>
-            <button className="counterButton" 
-            onClick={decrementCounterFunction}>-{by}</button>
-        </div>
-       </div>
-    );
-}
-
-CounterButton.propType={
-    by : PropTypes.number
-}
