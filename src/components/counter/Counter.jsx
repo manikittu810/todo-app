@@ -39,6 +39,7 @@ export default function Counter(){
 
     return(
     <div className="Counter">
+        <span className = "count">{count}</span>
         <div>
             <button className="counterButton" 
             onClick={incrementCounterFunction}>+{by}</button>
