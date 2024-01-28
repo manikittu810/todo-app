@@ -41,24 +41,11 @@ function handleSubmit(){
     }
     }
 
-    function SuccessMessageComponent(){
-        if(showSuccessMessage){
-        return <div className='successMessage'>Authentication  Successfull!!</div>
-        }
-        return null;
-    }
-    function ErrorMessageComponent(){
-        if(showErrorMessage){
-        return <div className='errorMessage' >Authentication  Failed!! Please check your Credentials</div>
-        }
-        return null;
-    }
-
     return(
         <div className="Login">
            <div className="LoginForm">
-            <SuccessMessageComponent />
-            <ErrorMessageComponent />
+            {showSuccessMessage && <div className='successMessage'>Authentication  Successfull!!</div>}
+            {showErrorMessage && <div className='errorMessage' >Authentication  Failed!! Please check your Credentials</div>}
             <div>
                 <label>username </label>
                 <input type="text" name="username" value={username} onChange={handleUsernameChange} />
