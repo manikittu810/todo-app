@@ -7,11 +7,12 @@ export default function TodoApp(){
         <div className="TodoApp">
         <BrowserRouter>
             <Routes>
-                <Route path='/' element={<LoginComponent />}></Route>
-                <Route path='/login' element={<LoginComponent />}></Route>
-                <Route path='/welcome/:username' element={<WelcomeComponent />}></Route>
-                <Route path='/*' element={<ErrorComponent />}></Route>
-
+                <Route path='/' element={<LoginComponent />}/>
+                <Route path='/login' element={<LoginComponent />}/>
+                <Route path='/welcome/:username' element={<WelcomeComponent />}/>
+                <Route path='/todos' element={<ListTodosComponent />}/>
+                <Route path='/*' element={<ErrorComponent />}/>
+                
             </Routes>
         </BrowserRouter>
         
@@ -94,6 +95,46 @@ function ErrorComponent(){
             <h1>We are working really hard!!</h1>
             <div>
                 Apologies for the 404. Reach out to our team at smk@help.com.
+            </div>
+        </div>
+    );
+}
+
+function ListTodosComponent(){
+    const todos = [
+    {id:1,description:'Learn AWS'},
+    {id:2,description:'Learn GCP'},
+    {id:3,description:'Learn Devops'},
+    {id:4,description:'Learn Full stack'}
+]
+    return(
+        <div className="ListTodosComponent">
+            <h1>Things you want to Do !</h1>
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>id</td>
+                            <td>description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            todos.map(
+                                todo =>(
+                                    <tr key = {todo.id}>
+                                        <td>{todo.id}</td>
+                                        <td>{todo.description}</td>
+                                    </tr>
+                                )
+                            )
+                        }
+                        <tr>
+                            <td>{todos.id}</td>
+                            <td>{todos.description}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     );
