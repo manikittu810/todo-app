@@ -73,4 +73,10 @@ Exploring React props (properties)
 you can pass "Props" (short for properties) object to a React Component.
 Used for things that remain constant during lifetime of acomponent
     -example increment value of a specific component
-    
+----------------------------------------------------------------------------------------
+
+We use useNavigate hook to redirect from one page another page , its more like a path variable in springboot.
+we create the hook as const navigate = useNavigate();
+
+and you can use navigate variable as (...in some condition) navigate('/welcome');
+this is to navigate to /welcome page.
