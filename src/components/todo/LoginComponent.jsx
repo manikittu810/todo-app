@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
+import { useAuth } from './security/AuthContext';
 
 function LoginComponent(){
     const[username,setUsername]=useState('Smk_TodoApp');
@@ -7,6 +8,7 @@ function LoginComponent(){
     const[showSuccessMessage,setShowSuccessMessage] = useState(false);
     const[showErrorMessage,setShowErrorMessage] = useState(false);
     const navigate = useNavigate();
+    const authContext = useAuth();
     
     
     
@@ -19,16 +21,19 @@ function LoginComponent(){
     
     function handleSubmit(){
         if(username==='Smk_TodoApp' && password==='smk123'){
+            authContext.setAuthenticated(true);
             console.log("Success");
             setShowSuccessMessage(true);
             setShowErrorMessage(false);
             navigate(`/welcome/${username}`);
+
         }
         else{
-        console.log("failed");
-        setShowSuccessMessage(false);
-        setShowErrorMessage(true);
-    
+            authContext.setAuthenticated(false);
+            console.log("failed");
+            setShowSuccessMessage(false);
+            setShowErrorMessage(true);
+        
         }
         }
     
