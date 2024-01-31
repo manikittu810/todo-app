@@ -1,7 +1,8 @@
 import {useParams, Link } from "react-router-dom";
 import axios from 'axios';
 import {useState}  from "react";
-
+import { retrieveHelloWorldBean } from "./api/HelloWorldApiService";
+import { retrieveHelloWorld } from "./api/HelloWorldApiService";
 function WelcomeComponent(){
 
     const {username} = useParams();
@@ -12,16 +13,15 @@ function callHelloWorldRestApi(){
     console.log('called');
 
 //the below is an asynchronous approach
-
-axios.get('http://localhost:8080/hello-world')
-        .then((response) => successfulResponse(response))
+        retrieveHelloWorld()
+        .then((response) => successfulResponse1(response))
         .catch((error) => errorResponse(error))
         .finally(()=>console.log('cleanup'))
 }
 
 function callHelloWorldBean(response){
     console.log('bean called')
-    axios.get('http://localhost:8080/hello-world-bean')
+    retrieveHelloWorldBean()
     .then((response) => successfulResponse(response))
     .catch((error) => errorResponse(error))
     .finally(()=> console.log('cleanUp the bean'))
@@ -30,6 +30,11 @@ function callHelloWorldBean(response){
 function successfulResponse(response){
     console.log(response);
     setMessage(response.data.message)
+}
+
+function successfulResponse1(response){
+    console.log(response);
+    setMessage(response.data)
 }
 
 function errorResponse(error){
