@@ -80,3 +80,9 @@ we create the hook as const navigate = useNavigate();
 
 and you can use navigate variable as (...in some condition) navigate('/welcome');
 this is to navigate to /welcome page.
+----------------------------------------------------------------------------------------
+
+To call a rest api using react we use 'axios'
+when using the axios , we can do three things -> then, catch,finally.
+we define callback methods. 
+everytime you use axios(some stmts).then() , what get back is called a 'promise'.
