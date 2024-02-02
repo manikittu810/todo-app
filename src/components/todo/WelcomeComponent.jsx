@@ -1,8 +1,6 @@
 import {useParams, Link } from "react-router-dom";
-import axios from 'axios';
 import {useState}  from "react";
-import { retrieveHelloWorldBean } from "./api/HelloWorldApiService";
-import { retrieveHelloWorld } from "./api/HelloWorldApiService";
+import { retrieveHelloWorldBean,retrieveHelloWorld,retrieveHelloWorldPathVariable } from "./api/HelloWorldApiService";
 function WelcomeComponent(){
 
     const {username} = useParams();
@@ -10,31 +8,48 @@ function WelcomeComponent(){
     const [message,setMessage]= useState(null)
 
 function callHelloWorldRestApi(){
-    console.log('called');
 
 //the below is an asynchronous approach
+
+        console.log('called');
+
         retrieveHelloWorld()
-        .then((response) => successfulResponse1(response))
+        .then((response) => successfulResponse(response))
         .catch((error) => errorResponse(error))
         .finally(()=>console.log('cleanup'))
 }
 
 function callHelloWorldBean(response){
+
     console.log('bean called')
+
     retrieveHelloWorldBean()
-    .then((response) => successfulResponse(response))
+    .then((response) => successfulResponse1(response))
+    .catch((error) => errorResponse(error))
+    .finally(()=> console.log('cleanUp the bean'))
+}
+
+function callHelloWorldPathVariable(response){
+    console.log('path variable called')
+    retrieveHelloWorldPathVariable('SMK')
+    .then((response) => successfulResponse2(response))
     .catch((error) => errorResponse(error))
     .finally(()=> console.log('cleanUp the bean'))
 }
 
 function successfulResponse(response){
     console.log(response);
-    setMessage(response.data.message)
+    setMessage(response.data)
 }
 
 function successfulResponse1(response){
     console.log(response);
-    setMessage(response.data)
+    setMessage(response.data.message)
+}
+
+function successfulResponse2(response){
+    console.log(response);
+    setMessage(response.data.message)
 }
 
 function errorResponse(error){
@@ -52,6 +67,9 @@ function errorResponse(error){
         </div>
         <div>
             <button className="btn btn-success m-5" onClick={callHelloWorldBean}>call Hello World Bean</button>
+        </div>
+        <div>
+            <button className="btn btn-success m-5" onClick={callHelloWorldPathVariable}>call Path variable</button>
         </div>
        <div className="text-info">{message}</div>
         </div>
