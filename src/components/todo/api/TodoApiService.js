@@ -5,3 +5,4 @@ const apiCleint = axios.create({
 });
 
 export  const retrieveAllTodosForUsername = (username) => apiCleint.get(`/users/${username}/todos`);
+export  const deleteTodoApi = (username,id) => apiCleint.delete(`/users/${username}/todos/${id}`);
