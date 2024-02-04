@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react";
 import { deleteTodoApi, retrieveAllTodosForUsername } from "./api/TodoApiService";
-// import { useAuth } from "./security/AuthContext";
+import { useAuth } from "./security/AuthContext";
 import {useNavigate} from 'react-router-dom';
 
 function ListTodosComponent(){
-    // const today = new Date();
 
+    const authContext = useAuth()
+
+    const username = authContext.username
+
+    // const today = new Date();
     // const targetDate  = new Date(today.getFullYear()+12,today.getMonth(),today.getDay());
 
     const [todos,setTodos] =useState([]);
+
     const[message,setMessage] = useState(null);
-    
-    // const authContext = useAuth()
-    // const username = authContext.username
 
     const navigate=useNavigate() ;
 
@@ -26,7 +28,7 @@ function ListTodosComponent(){
         .then(response => {
             setTodos(response.data)
         })
-        .catch((error) => console.log('error'))
+        .catch(error => console.log('error'))
     }
 
     function deleteTodo(id){
@@ -42,6 +44,10 @@ function ListTodosComponent(){
         console.log("clicked" + id)
         navigate(`/todos/${id}`)
        
+    }
+
+    function addNewTodo(){
+        navigate(`/todo/-1`)
     }
 
     return(
@@ -78,6 +84,7 @@ function ListTodosComponent(){
                     </tbody>
                 </table>
             </div>
+            <div className="btn btn-success" onClick={addNewTodo}>Add New Todo</div>
         </div>
     );
 }
