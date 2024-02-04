@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import {useParams} from 'react-router-dom';
 import { retrieveTodoApi } from './todo/api/TodoApiService';
 import { useAuth } from './todo/security/AuthContext';
-import { Formik, Field, Form } from 'formik'; 
+import { Formik, Field, Form, ErrorMessage } from 'formik'; 
 
 function TodoComponent(){
 
@@ -17,7 +17,6 @@ function TodoComponent(){
     const username = authContext.username;
 
     function retrieveTodos(){
-
         retrieveTodoApi(username,id)
         .then(response => {
             setDescription(response.data.description)
@@ -33,6 +32,23 @@ function TodoComponent(){
        function onSubmit(values){
         console.log(values)
        } 
+       function validate(values){
+        let errors = {
+            // description : 'Enter a valid description',
+            // targetDate : 'Enter a valid date'
+        }
+        if(values.description.length<5){
+            errors.description='Enter atleast 5 characters'
+
+        }
+        if(values.targetDate==null){
+            errors.targetDate = 'Enter a targetDate'
+        }
+        console.log(values)
+        return errors;
+       } 
+
+    
 
     return (
         <div className="container">
@@ -40,10 +56,25 @@ function TodoComponent(){
             <div>
                 <Formik initialValues={{description,targetDate}}
                 enableReinitialize={true}
-                onSubmit={onSubmit}>
+                onSubmit={onSubmit}
+                validate={validate}
+                validateOnBlur={false}
+                validateOnChange={false}>
                     {
                         (props) => (
                             <Form>
+                                <ErrorMessage
+                                name ="description"
+                                component="div"
+                                className='alert alert-warning'
+                                />
+
+                            <ErrorMessage
+                                name ="targetDate"
+                                component="div"
+                                className='alert alert-warning'
+                                />
+
                                 <fieldset className='form-group'>
                                     <label>Description</label>
                                     <Field type="text" className="form-control" name="description"/>
