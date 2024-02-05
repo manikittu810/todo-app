@@ -24,7 +24,7 @@ function ListTodosComponent(){
 
     function refreshTodos(){
 
-        retrieveAllTodosForUsername('in28minutes')
+        retrieveAllTodosForUsername(username)
         .then(response => {
             setTodos(response.data)
         })
@@ -33,22 +33,23 @@ function ListTodosComponent(){
 
     function deleteTodo(id){
         console.log("clicked" + id)
-        deleteTodoApi('in28minutes',id)
+        deleteTodoApi(username,id)
         .then(() =>{
             setMessage(`Delete of todo with id = ${id} is successfull`)
             refreshTodos()
         })
         .catch((error) => console.log("error"))
     }
+
     function updateTodo(id){
         console.log("clicked" + id)
         navigate(`/todos/${id}`)
        
     }
 
-    function addNewTodo(){
-        navigate(`/todo/-1`)
-    }
+    // function addNewTodo(){
+    //     navigate(`/todo/-1`)
+    // }
 
     return(
         <div className="container">
@@ -84,7 +85,7 @@ function ListTodosComponent(){
                     </tbody>
                 </table>
             </div>
-            <div className="btn btn-success" onClick={addNewTodo}>Add New Todo</div>
+            {/* <div className="btn btn-success" onClick={addNewTodo}>Add New Todo</div> */}
         </div>
     );
 }
