@@ -87,4 +87,8 @@ when using the axios , we can do three things -> then, catch,finally.
 we define callback methods. 
 everytime you use axios(some stmts).then() , what get back is called a 'promise'.
 ----------------------------------------------------------------------------------------
-for validation please visit TodoComponent.jsx 
+for validation exmaple please visit TodoComponent.jsx 
+--------------------------------------------------------------
+
+401 -> HTTP 401 unauthorized response status code indicates that , the client request has not been completed, because, it lacks valid authentication requested resource.
+200-> An HTTP response status code 200 means success. The client has requested the documents from the server and the server has replied client  with the documents to the clients and given the client documents.
