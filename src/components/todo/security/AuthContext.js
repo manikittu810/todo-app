@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { executeBasicAuthenticationService } from "../api/HelloWorldApiService";
+import { executeBasicAuthenticationService } from "../api/AuthenticationApiService";
 import { apiClient } from "../api/ApiClient";
 
 export const AuthContext = createContext()
@@ -40,6 +40,7 @@ async function login(username,password){
         setAuthenticated(true);
         setUsername(username);
         setToken(baToken)
+        
         apiClient.interceptors.request.use(
             (config) =>{
                 console.log('Intercepting and adding a token')
