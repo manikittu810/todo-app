@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { executeBasicAuthenticationService } from "../api/HelloWorldApiService";
 
 export const AuthContext = createContext()
 
@@ -11,22 +12,44 @@ const [isAuthenticated,setAuthenticated] = useState(false);
 const [username,setUsername] = useState(null);
 
 
-function login(username,password){
-    if(username==='Smk_TodoApp' && password==='smk123'){
-        setAuthenticated(true);
-        setUsername(username);
-        console.log("Success");
-        return true;
+// function login(username,password){
+//     if(username==='Smk_TodoApp' && password==='smk123'){
+//         setAuthenticated(true);
+//         setUsername(username);
+//         console.log("Success");
+//         return true;
 
-    }
-    else{
-        setAuthenticated(false);
-        setUsername(null);
-        return false;
+//     }
+//     else{
+//         setAuthenticated(false);
+//         setUsername(null);
+//         return false;
     
-    }
-}
+//     }
+// }
 
+
+function login(username,password){
+    const baToken =  'Basic ' + window.btoa(username + ":" + password)
+    executeBasicAuthenticationService(baToken)
+    .then(response =>console.log(response))
+    .catch(error => console.log(error))
+
+    setAuthenticated(false)
+    // if(username==='Smk_TodoApp' && password==='smk123'){
+    //     setAuthenticated(true);
+    //     setUsername(username);
+    //     console.log("Success");
+    //     return true;
+
+    // }
+    // else{
+    //     setAuthenticated(false);
+    //     setUsername(null);
+    //     return false;
+    
+    // }
+}
 function logout()
 {
     setAuthenticated(false);
