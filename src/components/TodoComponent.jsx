@@ -51,7 +51,7 @@ function TodoComponent(){
 
         console.log(todo)
 
-        if(id === -1){
+        if(id == -1){
             createTodoApi(username,todo)
             .then(response => {
                 navigate('/todos')
@@ -97,8 +97,9 @@ function TodoComponent(){
                 enableReinitialize={true}
                 onSubmit={onSubmit}
                 validate={validate}
+                validateOnChange={false}
                 validateOnBlur={false}
-                validateOnChange={false}>
+                >
                     {
                         (props) => (
                             <Form>
